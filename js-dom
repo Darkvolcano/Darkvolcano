@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta char="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale:1;">
+    </head>
+    <style>
+        #container{
+            width:300px;
+            height:300px;
+            position:relative;
+            background:yellow;
+        }
+        #movement{
+            width:50px;
+            height:50px;
+            position:absolute;
+            background:red;
+        }
+        #myDiv1,#myDiv2{
+            background-color:coral;
+            padding:50px;
+        }
+        #myP1,#myP2{
+            background-color:white;
+            font-size:20px;
+            border:1px solid;
+            padding:20px;
+        }
+    </style>
+    <body>
+        <p id="intro">My name is</p>
+        <p id="demo"></p>
+        <script>
+            const ele=document.getElementById("intro");
+            document.getElementById("demo").innerHTML=ele.innerHTML();
+        </script>
+        <h4>This is tag name</h6>
+        <p id="demo1"></p>
+        <script>
+            const elemen=document.getElementsByTagName("h4");
+            document.getElementById("demo1").innerHTML=elemen[0].innerHTML;
+        </script>
+        <div id="side">
+            <h4>This is a name</h4>
+            <h4>This is a id</h4>
+        </div>
+        <p id="demo2"></p>
+        <script>
+            const z1=document.getElementById("side");
+            const z2=z1.getElementsByTagName("h4");
+            document.getElementById("demo2").innerHTML=z2[0].innerHTML;
+        </script>
+        <h3 class="elementary">This is class name</h3>
+        <p id="demo3"></p>
+        <script>
+            const z3=document.getElementsByClassName("elementary");
+            document.getElementById("demo3").innerHTML=z3[0].innerHTML;
+        </script>
+        <h3 class="elementor">This is a selector</h3>
+        <p id="demo4"></p>
+        <script>
+            const z4=document.querySelectorAll("h3.elementor");
+            document.getElementById("demo4").innerHTML=z4[0].innerHTML;
+        </script>
+        <h3 id="changetext">Not change</h3>
+        <script>
+            document.getElementById("changetext").innerHTML="Text have changed";
+        </script>
+        <a name="html">HTML</a><br>
+        <a name="css">CSS</a><br>
+        <a name="javascript">Java Script</a><br>
+        <p id="demo5"></p>
+        <script>
+            document.getElementById("demo5").innerHTML=document.anchors.length;
+        </script>
+        <img src="https://www.w3schools.com/js/pic_htmltree.gif" width="486" height="266">
+        <img src="https://www.w3schools.com/js/pic_navigate.gif" width="362" height="255">
+        <p id="demo6"></p>
+        <script>
+            document.getElementById("demo6").innerHTML=document.images.length;
+        </script>
+        <p>
+            <a href="https://www.w3schools.com/html/default.asp">HTML</a>
+            <br>
+            <a href="https://www.w3schools.com/css/default.asp">CSS</a>
+        </p>
+        <p id="demo7"></p>
+        <script>
+            document.getElementById("demo7").innerHTML=document.links.length;
+        </script>
+        <script>
+            function validateFrom(){
+                let x=document.froms["myForm"]["fname"].value;
+                if(x==""){
+                    alert("You must filled in");
+                    return false;
+                }
+            }
+        </script>
+        <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Name:<input type="text" name="fname" required>
+        <input type="submit" value="Submit">
+        </form>
+        <br>
+        <P>Input the number between 1 and 10</P>
+        <input id="numb">
+        <button type="button" onclick="myFunction()">Submit</button>
+        <p id="demo8"></p>
+        <script>
+            function myFunction(){
+                let x1=document.getElementById("numb").value;
+                let text;
+                if(isNaN(x1) || x1<1 || x1>10){
+                    text="Input is not valid";
+                }else{
+                    text="Input OK";
+                }
+                document.getElementById("demo8").innerHTML=text;
+            }
+        </script>
+        <p id="p1">Hello</p>
+        <p id="p2">Goodbye</p>
+        <script>
+            document.getElementById("p1").style.color="red";
+            document.getElementById("p1").style.fontSize="larger";
+            document.getElementById("p2").style.color="blue";
+            document.getElementById("p2").style.fontSize="larger";
+        </script>
+        <h1 id="p3">Yes</h1>
+        <button type="button" onclick="document.getElementById('p3').style.color='red'">Click me</button>
+        <p><button onclick="myMove()">Click me</button></p>
+        <div id="container">
+            <div id="movement"></div>
+        </div>
+        <script>
+            function myMove(){
+                let id=null;
+                const element=document.getElementById("movement");
+                pos=0;
+                clearInterval(id);
+                id=setInterval(frame,5);
+                function frame(){
+                    if(pos == 250){
+                        clearInterval(id);
+                    }else{
+                        pos++;
+                        element.style.top=pos+"px";
+                        element.style.left=pos+"px";
+                    }
+                }
+            }
+        </script>
+        <p onclick="this.innerHTML='Good choice'">Click me</p>
+        Enter your name:<input type="text1" id="fname1" onchange="upperCase()">
+        <script>
+            function upperCase(){
+                const x1=document.getElementById("fname1");
+                x1.value=x1.value.toUpperCase();
+            }
+        </script>
+        <div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:orange;width:120px;height:20px;padding:40px;">Mouse over me</div>
+        <script>
+            function mOver(obj){
+                obj.innerHTML="Good choice";
+            }
+            function mOut(obj){
+                obj.innerHTML="Mouse over me";
+            }
+        </script>
+        <button id="myBtn">Try it</button>
+        <p id="demo9"></p>
+        <script>
+            var x2=document.getElementById("myBtn");
+            x2.addEventListener("mouseover",myfunction);
+            x2.addEventListener("click",mysecondfunction);
+            x2.addEventListener("mouseout",mythirdfunction);
+            function myfunction(){
+                document.getElementById("demo9").innerHTML += "Mouse over<br>"
+            }
+            function mysecondfunction(){
+                document.getElementById("demo9").innerHTML += "Clicked<br>"
+            }
+            function mythirdfunction(){
+                document.getElementById("demo9").innerHTML += "Mouse out<br>"
+            }
+        </script>
+        <button id="mybtn">Try it</button>
+        <p id="demo10"></p>
+        <script>
+            let p4=4;
+            let p5=5;
+            document.getElementById("mybtn").addEventListener("click",function(){
+                ourfunction(p4,p5);
+            });
+            function ourfunction(a,b){
+                document.getElementById("demo10").innerHTML=a*b;
+            }
+        </script>
+        <form id="frm1" action="/action_page.php">
+            First name:<input type="text2" name="fname2" value="A"><br>
+            Last name:<input type="text2" name="lname2" value="B"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <p id="demo11"></p>
+        <script>
+            const x3=document.form["frm2"];
+            let text2="";
+            let i;
+            for(i=0;i<x3.length;i++){
+                text2 += x.elements[i].value + "<br>";
+            }
+            document.getElementById("demo11").innerHTML=text2;
+        </script>
+        <div id="myDiv1">
+            <h2>Bubbling:</h2>
+            <p id="myP1">Click me</p>
+        </div><br>
+        <div id="myDiv2">
+            <h2>Capturing:</h2>
+            <p id="myP2">Click me</p>
+        </div>
+        <script>
+            document.getElementById("myP1").addEventListener("click",function(){
+                alert("White element");},false);
+            document.getElementById("myDiv1").addEventListener("click",function(){
+                alert("Orange element");},false);
+            document.getElementById("myP2").addEventListener("click",function(){
+                alert("White element");},true)
+            document.getElementById("myDiv2").addEventListener("click",function(){
+                alert("Orange element");},true)
+        </script>
+        <div id="div1">
+            <p id="p6">This is a paragraph</p>
+            <p id="p7">This is another paragraph</p>
+        </div>
+        <script>
+            const para=document.createElement("p");
+            const node=document.createTextNode("This is a different paragraph");
+            para.appendChild(node);
+            const eleme=document.getElementById("div1");
+            eleme.appendChild(para);
+        </script>
+        <div id="div2">
+            <p id="p8">This is a paragraph</p>
+            <p id="p9">This is another paragraph</p>
+        </div>
+        <script>
+            const para1=document.createElement("p");
+            const node1=document.createTextNode("This is a different paragraph");
+            para1.appendChild(node1);
+            const elem=document.getElementById("div2");
+            const child=document.getElementById("p9");
+            elem.insertBefore(para1,child);
+        </script>
+        <div id="div3">
+            <p id="a">This is a paragraph</p>
+            <p id="a1">This is another paragraph</p>
+        </div>
+        <script>
+            function Function(){
+                document.getElementById("a").remove();  
+            }
+        </script>
+        <button onclick="Function()">Remove element</button><br>
+        <a>Hello</a><br>
+        <a>Yes</a><br>
+        <a>No</a><br>
+        <a>Goodbye</a><br>
+        <button onclick="functions()">Change color</button>
+        <script>
+            function functions(){
+                const myCollection=document.getElementsByTagName("a");
+                let i;
+                for(i=0;i<myCollection.length;i++){
+                    myCollection[i].style.color="blue";
+                }
+            }
+        </script>
+        <p id="demo12"></p>
+        <script>
+            document.getElementById("demo12").innerHTML="Browser window width:" + window.innerWidth + "px<br>" + "Browser window height" + window.innerHeight + "px";
+        </script>
+        <p id="demo13"></p>
+        <p id="demo14"></p>
+        <script>
+            document.getElementById("demo13").innerHTML="Screen width:" + screen.width;
+            document.getElementById("demo14").innerHTML="Screen height:" + screen.height;
+        </script>
+        <p id="demo15"></p>
+        <script>
+            document.getElementById("demo15").innerHTML="Screen color depth:" + screen.colorDepth;
+        </script>
+        <p id="demo16"></p>
+        <script>
+            document.getElementById("demo16").innerHTML="Screen pixel depth:" + screen.pixelDepth;
+        </script>
+        <p id="demo17"></p>
+        <script>
+            document.getElementById("demo17").innerHTML="Page locaiton:" + window.location.href;
+        </script>
+        <p id="demo18"></p>
+        <script>
+            document.getElementById("demo18").innerHTML="Page hostname:" + window.location.hostname;
+        </script>
+        <p id="demo19"></p>
+        <script>
+            document.getElementById("demo19").innerHTML="Page pathname:" + window.location.pathname;
+        </script>
+        <p id="demo20"></p>
+        <script>
+            document.getElementById("demo20").innerHTML="Page protocol:" + window.location.protocol;
+        </script>
+        <p id="demo21"></p>
+        <script>
+            document.getElementById("demo21").innerHTML="Port number:" + window.location.port;
+        </script>
+        <input type="button" value="Load to new page" onclick="function1()"><br>
+        <script>
+            function function1(){
+                window.location.assign("https://www.w3schools.com");
+            }
+        </script>
+        <script>
+            function goBack(){
+                window.history.back();
+            }
+        </script>
+        <input type="button" value="Back" onclick="goBack()">
+        <p id="demo22"></p>
+        <script>
+            function alert(){
+                var text3;
+                if(confirm("Press a button")){
+                    text3="You pressed ok";
+                }else{
+                    text3="You pressed cancel";
+                }
+                document.getElementById("demo22").innerHTML=text3;
+            }
+        </script>
+        <input type="button" value="Click it" onclick="alert()">
+        <p id="demo23"></p>
+        <input type="button" value="click it" onclick="goAlert()">
+        <script>
+            function goAlert(){
+                let txt;
+                let person=prompt("Please enter your name"," ");
+                if(person==null||person==""){
+                    txt="User not exist"
+                }else{
+                    txt="Hello " + person + "!Nice to meet you"
+                }
+                document.getElementById("demo23").innerHTML=txt;
+            }
+        </script>
+        <p id="demo24"></p>
+        <input type="button" value="Stop time" onclick="clearInterval(myVar)">
+        <script>
+            let myVar=setInterval(myTimer,1000);
+            function myTimer(){
+                const d=new Date();
+                document.getElementById("demo24").innerHTML=d.toLocaleTimeString();
+            }
+        </script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <div id="myPlot" stye="width:100%;max-width:700px"></div>
+        <script>
+            const xArray=[50,60,70,80,90,100,110,120,130,140,150];
+            const yArray=[7,8,8,9,9,9,10,11,14,14,15];
+            const data=[{
+                x:xArray,
+                y:yArray,
+                mode:"markers"
+            }];
+            const layout={
+                xaxis:{range:[40,160],title:"Square Meters"},
+                yaxis:{range:[5,16],title:"Price in Millions"},
+                title:"House Prices vs. Size"
+            };
+            Plotly.newPlot("myPlot",data,layout);
+        </script>
+    </body>
+</html>
